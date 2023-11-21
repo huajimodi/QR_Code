@@ -8,7 +8,7 @@
     <div id="jsonContent">Loading...</div>
     <script>
         // If your JSON file is hosted on the same GitHub repository
-        fetch('QR_code/dos/testing.json')
+        fetch('/QR_code/dos/testing.json')
             .then(response => response.json())
             .then(data => {
                 document.getElementById('jsonContent').innerHTML = JSON.stringify(data, null, 2);
