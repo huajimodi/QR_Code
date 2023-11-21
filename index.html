@@ -40,9 +40,43 @@
     <div class="playlist-container" id="playlistContent"></div>
     <script>
         var playlistData = {
-            "playlistName": "My Favorite Songs",
-            // ... rest of your JSON content
-        };
+  "playlistName": "My Favorite Songs",
+  "description": "A collection of my all-time favorite tracks.",
+  "totalSongs": 5,
+  "songs": [
+    {
+      "title": "Imagine",
+      "artist": "John Lennon",
+      "duration": "3:05",
+      "genre": "Pop"
+    },
+    {
+      "title": "Bohemian Rhapsody",
+      "artist": "Queen",
+      "duration": "5:55",
+      "genre": "Rock"
+    },
+    {
+      "title": "Shape of You",
+      "artist": "Ed Sheeran",
+      "duration": "3:53",
+      "genre": "Pop"
+    },
+    {
+      "title": "Billie Jean",
+      "artist": "Michael Jackson",
+      "duration": "4:54",
+      "genre": "Pop"
+    },
+    {
+      "title": "Rolling in the Deep",
+      "artist": "Adele",
+      "duration": "3:48",
+      "genre": "Soul"
+    }
+  ]
+}
+;
 
         function displayPlaylist(data) {
             var content = "<h2>" + data.playlistName + "</h2>";
