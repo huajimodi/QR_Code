@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Playlist UI</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Stylish Playlist</title>
     <style>
-        .playlist-container {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f8;
+            color: #333;
+            text-align: center;
             padding: 20px;
         }
-        .song-item {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
+        .playlist-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .song {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .song:last-child {
+            border-bottom: none;
         }
         .song-title {
-            font-size: 1.2em;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0056b3;
         }
-        .song-attributes {
-            font-size: 0.9em;
+        .song-artist {
             color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="container playlist-container">
-        <h2 class="text-center">My Playlist</h2>
-        <div class="list-group">
-            <!-- Repeat this part for each song in the playlist -->
-            <div class="list-group-item song-item">
-                <div class="song-title">Song Name</div>
-                <div class="song-attributes">
-                    <span>Length: 3:30</span> | 
-                    <span>Note: Uplifting</span>
-                </div>
-            </div>
-            <!-- End of song item -->
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <h1>My Playlist</h1>
+    <div class="playlist-container" id="playlistContent"></div>
+    <script>
+        var playlistData = {
+            "playlistName": "My Favorite Songs",
+            // ... rest of your JSON content
+        };
+
+        function displayPlaylist(data) {
+            var content = "<h2>" + data.playlistName + "</h2>";
+            data.songs.forEach(function(song) {
+                content += "<div class='song'><div class='song-title'>" + song.title + 
+                           "</div><div class='song-artist'>" + song.artist + 
+                           " (" + song.duration + ")</div></div>";
+            });
+            document.getElementById('playlistContent').innerHTML = content;
+        }
+
+        displayPlaylist(playlistData);
+    </script>
 </body>
 </html>
