@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My JSON Content</title>
-    <!-- Add some CSS here if needed -->
+    <title>JSON Content Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
-    <div id="jsonContent">Loading...</div>
+    <h1>JSON Data from testing.json</h1>
+    <pre id="jsonContent">Loading JSON data...</pre>
     <script>
-        // If your JSON file is hosted on the same GitHub repository
         fetch('testing.json')
             .then(response => response.json())
             .then(data => {
-                document.getElementById('jsonContent').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('jsonContent').textContent = JSON.stringify(data, null, 2);
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('jsonContent').textContent = 'Error loading JSON data.';
+            });
     </script>
 </body>
 </html>
