@@ -40,52 +40,26 @@
     <div class="playlist-container" id="playlistContent"></div>
     <script>
         var playlistData = {
-  "playlistName": "My Favorite Songs",
-  "description": "A collection of my all-time favorite tracks.",
-  "totalSongs": 5,
-  "songs": [
-    {
-      "title": "Imagine",
-      "artist": "John Lennon",
-      "duration": "3:05",
-      "genre": "Pop"
-    },
-    {
-      "title": "Bohemian Rhapsody",
-      "artist": "Queen",
-      "duration": "5:55",
-      "genre": "Rock"
-    },
-    {
-      "title": "Shape of You",
-      "artist": "Ed Sheeran",
-      "duration": "3:53",
-      "genre": "Pop"
-    },
-    {
-      "title": "Billie Jean",
-      "artist": "Michael Jackson",
-      "duration": "4:54",
-      "genre": "Pop"
-    },
-    {
-      "title": "Rolling in the Deep",
-      "artist": "Adele",
-      "duration": "3:48",
-      "genre": "Soul"
-    }
-  ]
-}
-;
+            // Your existing playlist data
+        };
 
         function displayPlaylist(data) {
             var content = "<h2>" + data.playlistName + "</h2>";
-            data.songs.forEach(function(song) {
-                content += "<div class='song'><div class='song-title'>" + song.title + 
-                           "</div><div class='song-artist'>" + song.artist + 
-                           " (" + song.duration + ")</div></div>";
+            data.songs.forEach(function(song, index) {
+                content += "<div class='song' onclick='toggleDetails(" + index + ")'>" +
+                           "<div class='song-title'>" + song.title + "</div>" +
+                           "<div class='song-details' id='details-" + index + "'>" +
+                           "Artist: " + song.artist + "<br>" +
+                           "Duration: " + song.duration + "<br>" +
+                           "Genre: " + song.genre +
+                           "</div></div>";
             });
             document.getElementById('playlistContent').innerHTML = content;
+        }
+
+        function toggleDetails(index) {
+            var details = document.getElementById('details-' + index);
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
         }
 
         displayPlaylist(playlistData);
