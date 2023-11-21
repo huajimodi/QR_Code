@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My JSON Content</title>
+    <!-- Add some CSS here if needed -->
+</head>
+<body>
+    <div id="jsonContent">Loading...</div>
+    <script>
+        // If your JSON file is hosted on the same GitHub repository
+        fetch('path/to/yourfile.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('jsonContent').innerHTML = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
